@@ -1,0 +1,23 @@
+{
+    "name": "really4you/e-sign",
+    "description": "Electronic Signature Package",
+    "authors": [
+        {
+            "name": "Zhong_chou",
+            "email": "279057911@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "really4you\\E\\Sign\\": "src"
+        },
+        "files": [
+            "src/common.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "^7.1",
+        "symfony/cache": "^5.2"
+    }
+}
