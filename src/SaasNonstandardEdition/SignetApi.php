@@ -22,10 +22,7 @@ class SignetApi
     {
         $create = SignetService::CreatePersonalTemplate($option);
 
-        $createResp = $create->handle();
-        $createJson = $createResp->getBody();
-
-        return $createJson;
+        return $create->handle();
     }
 
     /**
@@ -38,9 +35,6 @@ class SignetApi
     {
         $create = SignetService::CreateOfficialtemplate($option);
 
-        $createResp = $create->handle();
-        $createJson = $createResp->getBody();
-
-        return $createJson;
+        return $create->handle();
     }
 }

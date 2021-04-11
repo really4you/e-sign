@@ -28,10 +28,7 @@ class Organizations
     {
         $create = Organization::createOrganizationsByThirdPartyUserId($option);
 
-        $createResp = $create->handle();
-        $createJson = $createResp->getBody();
-
-        return $createJson;
+        return $create->handle();
     }
 
 
@@ -46,11 +43,8 @@ class Organizations
      */
     public function updateOrganizationsByOrgId(array $option)
     {
-        $account = Organization::updateOrganizationsByOrgId($option);
+        $organ = Organization::updateOrganizationsByOrgId($option);
 
-        $createPsnResp = $account->handle();
-        $createPsnJson = $createPsnResp->getBody();
-
-        return $createPsnJson;
+        return $organ->handle();
     }
 }

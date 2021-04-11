@@ -2,12 +2,11 @@
 require "vendor/autoload.php";
 
 use \really4you\E\Sign\Esign;
-
-Esign::init('appid','scert');
+Esign::init('7438819368','5eb5b91cbfbc282fa858cffd97967a0f');
 
 // 创建个人签署账号
 
-//$option = ['thirdPartyUserId'=>'1232133232','email'=>'zqlpcs@qq.com'];
+//$option = ['thirdPartyUserId'=>'1232133232'];
 //$Test = new \really4you\E\Sign\SaasNonstandardEdition\Personal();
 //$res  = $Test->addPersonAccountID($option);
 //var_dump($res);exit;
@@ -18,9 +17,12 @@ Esign::init('appid','scert');
 //$res = $Test->createOrganizationsByThirdPartyUserId($option);
 //var_dump($res);exit;
 //
-//$option = ['orgId'=>'8872534919e3413aa06404fad9044413','name'=>'四川天投123','idNumber'=>'513902198910015837','test'=>12121];
-//$res = $Test->updateOrganizationsByOrgId($option);
-//var_dump($res);exit;
+
+
+$Test = new \really4you\E\Sign\SaasNonstandardEdition\Organizations();
+$option = ['orgId'=>'8872534919e3413aa06404fad9044413','name'=>'四川天投123','idNumber'=>'513902198910015837','test'=>12121];
+$res = $Test->updateOrganizationsByOrgId($option);
+var_dump($res);exit;
 //
 //$res = $Test->updateOrganizationsByOrgId('8872534919e3413aa06404fad9044413','四川天投1','','',
 //    '513902198910015837');

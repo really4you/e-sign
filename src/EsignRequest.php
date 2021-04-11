@@ -2,7 +2,7 @@
 
 namespace really4you\E\Sign;
 
-use really4you\E\Sign\Helper\HttpHelper;
+use really4you\E\Sign\Helper\UtilHelper;
 use ReflectionClass;
 use really4you\E\Sign\Traits\HasHttpRequest;
 
@@ -12,7 +12,7 @@ abstract class EsignRequest
 
     private $reqType;
     private $url;
-    private $baseUri = "https://smlopenapi.esign.cn";
+    public  $baseUri = "https://smlopenapi.esign.cn";
 
     public function handle()
     {
@@ -29,13 +29,16 @@ abstract class EsignRequest
             $paramStr='{}';
         }
 
-//        var_dump($this->url);var_dump($paramStr);exit;
-//        $headers =  UtilHelper::buildHeaders($this->reqType,$this->url,$paramStr);
-//        $param = json_decode($paramStr,true);
-//        $param['headers'] = $headers;
-//        return $this->request($this->reqType,$this->url,$param);
+        // set headers
+        $headers =  (!(strtoupper($this->reqType) == "GET") || !(strtoupper($this->reqType) == "DELETE") ) ?
+                UtilHelper::buildHeaders($this->reqType,$this->url,$paramStr) : [];
 
-        return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = $this->baseUri);
+        $param = json_decode($paramStr,true);
+
+        return $this->eSignRequest($this->reqType,$this->baseUri.$this->url,$param,$headers);
+
+        // curl request
+       // return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = $this->baseUri);
     }
 
     public function getReqType()

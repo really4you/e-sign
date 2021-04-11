@@ -15,9 +15,6 @@ class SignFileApi
     public function createSignFlow(array $option)
     {
         $createSignFlow = SignFile::createSignFlow($option);
-        $createSignFlowResp = $createSignFlow->handle();
-        $createSignFlowJson = json_decode($createSignFlowResp->getBody());
-
-        return $createSignFlowJson;
+        return $createSignFlow->handle();
     }
 }

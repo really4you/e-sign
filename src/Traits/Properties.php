@@ -7,7 +7,7 @@ use really4you\E\Sign\Helper\StrHelp;
 trait Properties
 {
     /**
-     * 设置属性
+     * set properties
      *
      * @param array $option
      * @throws \ReflectionException
@@ -18,7 +18,7 @@ trait Properties
         $class = $ref->getName();
         $perfix = property_exists($this,$this->prefix) ? : 'set';
 
-        // 默认属性
+        // set default properties
         if(!empty($defaultP = $this->defaultProperties)){
             foreach ($defaultP as $propert){
                 $method = StrHelp::studly($propert);

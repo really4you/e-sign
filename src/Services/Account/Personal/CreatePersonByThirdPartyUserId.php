@@ -25,6 +25,8 @@ class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSeriali
     private $mobile;
     private $email;
 
+    protected $defaultProperties = ['idType'];
+
     public function __construct($option)
     {
         $this->setProperties($option);
@@ -55,7 +57,7 @@ class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSeriali
         return $this->idType;
     }
 
-    public function setIdType($idType)
+    public function setIdType($idType = 'CRED_PSN_CH_IDCARD')
     {
         $this->idType = $idType;
     }
@@ -103,7 +105,8 @@ class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSeriali
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null) {
+            // e
+            if($value == null || is_array($value)) {
                 continue;
             }
             $json[$key] = $value;

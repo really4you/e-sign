@@ -11,6 +11,17 @@ use Psr\Http\Message\ResponseInterface;
 trait HasHttpRequest
 {
     /**
+     *
+     * @var array
+     */
+    protected $http = [
+        'PUT'    => 'putJson',
+        'POST'   => 'postJson',
+        'GET'    => 'get',
+        'DELETE' => 'delete'
+    ];
+
+    /**
      * Make a get request.
      *
      * @param string $endpoint
@@ -59,6 +70,55 @@ trait HasHttpRequest
             'headers' => $headers,
             'json' => $params,
         ]);
+    }
+
+    /**
+     * make a put request
+     *
+     * @param $endpoint
+     * @param array $params
+     * @param array $headers
+     *
+     * @return array|ResponseInterface|string
+     */
+    protected function putJson($endpoint, $params = [], $headers = [])
+    {
+        return $this->request('put', $endpoint, [
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+    }
+
+    /**
+     * make a delete request
+     *
+     * @param $endpoint
+     * @param array $params
+     * @param array $headers
+     *
+     * @return array|ResponseInterface|string
+     */
+    protected function delete($endpoint, $params = [], $headers = [])
+    {
+        return $this->request('delete', $endpoint, [
+            'headers' => $headers,
+            'json' => $params,
+        ]);
+    }
+
+    /**
+     * make a e-sign request
+     *
+     * @param $method
+     * @param $endpoint
+     * @param array $options
+     * @param array $headers
+     *
+     * @return mixed
+     */
+    protected function eSignRequest($method, $endpoint, $options = [] ,$headers = [])
+    {
+       return $this->{$this->http[$method]}($endpoint, $options, $headers);
     }
 
     /**
@@ -121,7 +181,8 @@ trait HasHttpRequest
         $contents = $response->getBody()->getContents();
 
         if (false !== stripos($contentType, 'json') || stripos($contentType, 'javascript')) {
-            return json_decode($contents, true);
+            //return json_decode($contents, true);   // todo
+            return $contents;
         } elseif (false !== stripos($contentType, 'xml')) {
             return json_decode(json_encode(simplexml_load_string($contents)), true);
         }

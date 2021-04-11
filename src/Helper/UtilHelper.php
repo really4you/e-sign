@@ -6,6 +6,38 @@ use really4you\E\Sign\Esign;
 
 class UtilHelper
 {
+
+    /**
+     * set headers
+     *
+     * @param $reqType
+     * @param $url
+     * @param $paramStr
+     * @return array
+     */
+    public static function buildHeaders($reqType, $url, $paramStr)
+    {
+        $contentMd5    = self::getContentMd5($paramStr);
+        $reqSignature = self::getSignature($reqType,"*/*","application/json; charset=UTF-8",$contentMd5,
+            "","",$url);
+
+        return self::setGuzzleHeaders($contentMd5,$reqSignature);
+    }
+
+    public static function setGuzzleHeaders($contentMD5,$reqSignature)
+    {
+        return [
+         'X-Tsign-Open-App-Id'=>Esign::getProjectId(),
+         'X-Tsign-Open-Ca-Timestamp'=>self::getMillisecond(),
+         'Accept'=>'*/*',
+         'X-Tsign-Open-Ca-Signature'=>$reqSignature,
+         'Content-MD5'=>$contentMD5,
+         'Content-Type'=>'application/json; charset=UTF-8',
+         'X-Tsign-Open-Auth-Mode'=>'Signature'
+        ];
+    }
+
+
     /**
      * 构造头部信息
      *

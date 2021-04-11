@@ -22,10 +22,7 @@ class Personal
     {
         $createPsn = Account::createPersonByThirdPartyUserId($option);
 
-        $createPsnResp = $createPsn->handle();
-        $createPsnJson = $createPsnResp->getBody();
-
-        return $createPsnJson;
+        return $createPsn->handle();
     }
 
     /**
@@ -41,10 +38,7 @@ class Personal
     {
         $account = Account::updatePersonAccountByAccountId($option);
 
-        $createPsnResp = $account->handle();
-        $createPsnJson = $createPsnResp->getBody();
-
-        return $createPsnJson;
+        return $account->handle();
     }
 
 }

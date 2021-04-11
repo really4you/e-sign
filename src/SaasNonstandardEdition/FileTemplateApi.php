@@ -24,10 +24,7 @@ class FileTemplateApi
     {
         $file = FileTemplate::createFileByTemplate($option);
 
-        $resp = $file->handle();
-        $json = $resp->getBody();
-
-        return $json;
+        return $file->handle();
     }
 
     /**
@@ -41,10 +38,7 @@ class FileTemplateApi
     {
         $file = FileTemplate::CreateTemplateByUploadUrl($option);
 
-        $resp = $file->handle();
-        $json = $resp->getBody();
-
-        return $json;
+        return $file->handle();
     }
 
     /**
@@ -57,9 +51,6 @@ class FileTemplateApi
     {
         $file = FileTemplate::TemplatesInfo($templateId);
 
-        $resp = $file->handle();
-        $json = $resp->getBody();
-
-        return $json;
+        return $file->handle();
     }
 }
