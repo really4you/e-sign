@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Organization;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 注销机构账号（按照账号ID注销）
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class DeleteOrganizationsByOrgId
  * @package really4you\E\Sign\Services\Account
  */
-class DeleteOrganizationsByOrgId extends EsignRequest implements JsonSerializable,RequestUrl
+class DeleteOrganizationsByOrgId extends EsignRequest implements \JsonSerializable
 {
     private $orgId;
 
@@ -60,7 +58,7 @@ class DeleteOrganizationsByOrgId extends EsignRequest implements JsonSerializabl
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='orgId') {
+            if($value == null || $key =='orgId') {
                 continue;
             }
             $json[$key] = $value;

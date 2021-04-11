@@ -4,7 +4,6 @@ namespace really4you\E\Sign\Services\FileTemplate;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -13,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class CreateFileByTemplate
  * @package really4you\E\Sign\Services\FileTemplate
  */
-class CreateFileByTemplate extends EsignRequest implements \JsonSerializable,RequestUrl
+class CreateFileByTemplate extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 

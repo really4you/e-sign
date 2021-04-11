@@ -14,7 +14,7 @@ trait HasHttpRequest
      *
      * @var array
      */
-    protected $http = [
+    private $http = [
         'PUT'    => 'putJson',
         'POST'   => 'postJson',
         'GET'    => 'get',

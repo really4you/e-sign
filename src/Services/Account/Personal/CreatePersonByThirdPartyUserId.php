@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -14,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class CreatePersonByThirdPartyUserId
  * @package really4you\E\Sign\Account
  */
-class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSerializable ,RequestUrl
+class CreatePersonByThirdPartyUserId extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 
@@ -25,7 +23,7 @@ class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSeriali
     private $mobile;
     private $email;
 
-    protected $defaultProperties = ['idType'];
+    private $defaultProperties = ['idType'];
 
     public function __construct($option)
     {
@@ -105,11 +103,12 @@ class CreatePersonByThirdPartyUserId extends EsignRequest implements JsonSeriali
     {
         $json = array();
         foreach ($this as $key => $value) {
-            // e
-            if($value == null || is_array($value)) {
-                continue;
-            }
-            $json[$key] = $value;
+
+           if($value == null || is_array($value)) {
+               continue;
+           }
+
+           $json[$key] = $value;
         }
         return $json;
     }

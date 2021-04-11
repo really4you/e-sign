@@ -4,7 +4,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -13,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class UpdatePersonAccountByAccountId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class UpdatePersonAccountByAccountId extends EsignRequest implements \JsonSerializable,RequestUrl
+class UpdatePersonAccountByAccountId extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 
@@ -142,7 +141,7 @@ class UpdatePersonAccountByAccountId extends EsignRequest implements \JsonSerial
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='accountId') {
+            if($value == null || $key == 'accountId') {
                 continue;
             }
             $json[$key] = $value;

@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
-use JsonSerializable;
 
 /**
  * 查询认证信息
@@ -13,7 +11,7 @@ use JsonSerializable;
  * Class QueryAuthenticationInformation
  * @package really4you\E\Sign\Services
  */
-class QueryAuthenticationInformation extends EsignRequest implements JsonSerializable,RequestUrl
+class QueryAuthenticationInformation extends EsignRequest implements \JsonSerializable
 {
     /**
      * 实名认证流程Id
@@ -41,7 +39,7 @@ class QueryAuthenticationInformation extends EsignRequest implements JsonSeriali
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null) {
+            if($value == null) {
                 continue;
             }
             $json[$key] = $value;

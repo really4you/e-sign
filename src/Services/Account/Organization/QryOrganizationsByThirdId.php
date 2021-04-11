@@ -4,15 +4,13 @@ namespace really4you\E\Sign\Services\Account\Organization;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 轩辕API查询机构账号（按照第三方机构ID查询）
  * @author  澄泓
  * @date  2020/11/20 10:18
  */
-class QryOrganizationsByThirdId extends EsignRequest implements JsonSerializable,RequestUrl
+class QryOrganizationsByThirdId extends EsignRequest implements \JsonSerializable
 {
     private $thirdPartyUserId;
 
@@ -58,7 +56,7 @@ class QryOrganizationsByThirdId extends EsignRequest implements JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='thirdPartyUserId') {
+            if($value == null || $key =='thirdPartyUserId') {
                 continue;
             }
             $json[$key] = $value;

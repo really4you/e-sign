@@ -6,7 +6,6 @@ use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\Exceptions\InvalidArgumentException;
 use really4you\E\Sign\Helper\UtilHelper;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 通过上传方式创建模板
@@ -14,7 +13,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class CreateTemplateByUploadUrl
  * @package really4you\E\Sign\Services\FileTemplate
  */
-class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializable,RequestUrl
+class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializable
 {
     private $contentMd5;
 

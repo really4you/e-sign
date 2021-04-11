@@ -6,6 +6,7 @@ class Esign
 {
     private static $project_id;
     private static $project_scert;
+    private static $base_uri = 'https://smlopenapi.esign.cn';
 
     //设置代理
     private static $ENABLE_HTTP_PROXY;//是否代理
@@ -38,6 +39,15 @@ class Esign
         self::$project_scert = $project_scert;
     }
 
+    public static function getBaseUri()
+    {
+        return self::$base_uri;
+    }
+
+    public static function setBaseUri($uri)
+    {
+        return self::$base_uri = $uri;
+    }
 
     public static function getENABLEHTTPPROXY()
     {

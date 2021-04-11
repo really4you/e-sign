@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 查询个人账户（按照第三方用户ID查询）
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class QryPersonByThirdId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class QryPersonByThirdId extends EsignRequest implements JsonSerializable,RequestUrl
+class QryPersonByThirdId extends EsignRequest implements \JsonSerializable
 {
     private $thirdPartyUserId;
 
@@ -60,7 +58,7 @@ class QryPersonByThirdId extends EsignRequest implements JsonSerializable,Reques
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='thirdPartyUserId') {
+            if($value == null || $key == 'thirdPartyUserId') {
                 continue;
             }
             $json[$key] = $value;

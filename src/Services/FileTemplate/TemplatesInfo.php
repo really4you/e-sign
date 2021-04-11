@@ -4,7 +4,6 @@ namespace really4you\E\Sign\Services\FileTemplate;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 查询模板详情/下载模板
@@ -12,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class TemplatesInfo
  * @package really4you\E\Sign\Services\FileTemplate
  */
-class TemplatesInfo extends EsignRequest implements \JsonSerializable,RequestUrl
+class TemplatesInfo extends EsignRequest implements \JsonSerializable
 {
     private $templateId;
 

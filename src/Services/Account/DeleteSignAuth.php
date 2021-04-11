@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 解除静默签署授权
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class DeleteSignAuth
  * @package really4you\E\Sign\Services\Account
  */
-class DeleteSignAuth extends EsignRequest implements JsonSerializable,RequestUrl
+class DeleteSignAuth extends EsignRequest implements \JsonSerializable
 {
     private $accountId;
 
@@ -60,7 +58,7 @@ class DeleteSignAuth extends EsignRequest implements JsonSerializable,RequestUrl
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='accountId') {
+            if($value == null || $key == 'accountId') {
                 continue;
             }
             $json[$key] = $value;

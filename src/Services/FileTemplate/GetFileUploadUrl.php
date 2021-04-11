@@ -4,7 +4,6 @@ namespace really4you\E\Sign\Services\FileTemplate;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 通过上传方式创建文件
@@ -12,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class GetFileUploadUrl
  * @package really4you\E\Sign\Services\FileTemplate
  */
-class GetFileUploadUrl extends EsignRequest implements \JsonSerializable,RequestUrl
+class GetFileUploadUrl extends EsignRequest implements \JsonSerializable
 {
     private $contentMd5;
     private $contentType;

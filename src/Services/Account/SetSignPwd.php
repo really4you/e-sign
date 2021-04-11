@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 设置签署密码
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class SetSignPwd
  * @package really4you\E\Sign\Services\Account
  */
-class SetSignPwd extends EsignRequest implements JsonSerializable,RequestUrl
+class SetSignPwd extends EsignRequest implements \JsonSerializable
 {
     private $accountId;
     private $password;
@@ -78,7 +76,7 @@ class SetSignPwd extends EsignRequest implements JsonSerializable,RequestUrl
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='accountId') {
+            if($value == null || $key =='accountId') {
                 continue;
             }
             $json[$key] = $value;

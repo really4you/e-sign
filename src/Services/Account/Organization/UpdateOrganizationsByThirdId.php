@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Organization;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 机构账号修改（按照第三方机构ID修改）
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class UpdateOrganizationsByThirdId
  * @package really4you\E\Sign\Services\Account\Organization
  */
-class UpdateOrganizationsByThirdId extends EsignRequest implements JsonSerializable,RequestUrl
+class UpdateOrganizationsByThirdId extends EsignRequest implements \JsonSerializable
 {
     private $thirdPartyUserId;
     private $name;
@@ -145,7 +143,7 @@ class UpdateOrganizationsByThirdId extends EsignRequest implements JsonSerializa
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='thirdPartyUserId') {
+            if($value == null || $key =='thirdPartyUserId') {
                 continue;
             }
             $json[$key] = $value;

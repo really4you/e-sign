@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 注销个人账户（按照第三方用户ID注销）
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class DeletePersonByThirdId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class DeletePersonByThirdId extends EsignRequest implements JsonSerializable,RequestUrl
+class DeletePersonByThirdId extends EsignRequest implements \JsonSerializable
 {
     private $thirdPartyUserId;
 
@@ -61,7 +59,7 @@ class DeletePersonByThirdId extends EsignRequest implements JsonSerializable,Req
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='thirdPartyUserId') {
+            if($value == null|| $key == 'thirdPartyUserId') {
                 continue;
             }
             $json[$key] = $value;

@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Organization;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -14,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class UpdateOrganizationsByOrgId
  * @package really4you\E\Sign\Services\Account\Organization
  */
-class UpdateOrganizationsByOrgId extends EsignRequest implements JsonSerializable,RequestUrl
+class UpdateOrganizationsByOrgId extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 
@@ -160,7 +158,7 @@ class UpdateOrganizationsByOrgId extends EsignRequest implements JsonSerializabl
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='orgId') {
+            if( $value ==null || $key=='orgId' || is_array($value)) {
                 continue;
             }
             $json[$key] = $value;

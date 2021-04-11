@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 查询个人账户（按照账户ID查询）
@@ -13,7 +11,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class QryPersonByaccountId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class QryPersonByaccountId extends EsignRequest implements JsonSerializable,RequestUrl
+class QryPersonByaccountId extends EsignRequest implements \JsonSerializable
 {
     private $accountId;
 
@@ -60,7 +58,7 @@ class QryPersonByaccountId extends EsignRequest implements JsonSerializable,Requ
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='accountId') {
+            if($value == null || $key == 'accountId') {
                 continue;
             }
             $json[$key] = $value;

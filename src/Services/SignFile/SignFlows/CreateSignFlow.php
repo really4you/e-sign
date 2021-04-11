@@ -4,7 +4,6 @@ namespace really4you\E\Sign\Services\SignFile\SignFlows;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -13,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class CreateSignFlow
  * @package really4you\E\Sign\Services\SignFile\SignFlows
  */
-class CreateSignFlow extends EsignRequest implements \JsonSerializable,RequestUrl
+class CreateSignFlow extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 

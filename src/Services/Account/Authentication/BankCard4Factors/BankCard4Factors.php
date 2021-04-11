@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Authentication\BankCard4Factors;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
-use JsonSerializable;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -14,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class BankCard4Factors
  * @package really4you\E\Sign\Services\Account\Authentication
  */
-class BankCard4Factors extends EsignRequest implements JsonSerializable,RequestUrl
+class BankCard4Factors extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 

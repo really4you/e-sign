@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Account\Authentication\BankCard4Factors;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
-use JsonSerializable;
 
 /**
  * 银行预留手机号验证码校验
@@ -13,7 +11,7 @@ use JsonSerializable;
  * Class MobileVerificationCode
  * @package really4you\E\Sign\Services\Account\Authentication\BankCard4Factors
  */
-class MobileVerificationCode extends EsignRequest implements JsonSerializable,RequestUrl
+class MobileVerificationCode extends EsignRequest implements \JsonSerializable
 {
     /**
      * 实名认证流程Id
@@ -59,7 +57,7 @@ class MobileVerificationCode extends EsignRequest implements JsonSerializable,Re
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null) {
+            if($value == null) {
                 continue;
             }
             $json[$key] = $value;

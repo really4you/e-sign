@@ -2,6 +2,7 @@
 
 namespace really4you\E\Sign;
 
+use really4you\E\Sign\Helper\HttpHelper;
 use really4you\E\Sign\Helper\UtilHelper;
 use ReflectionClass;
 use really4you\E\Sign\Traits\HasHttpRequest;
@@ -12,7 +13,6 @@ abstract class EsignRequest
 
     private $reqType;
     private $url;
-    public  $baseUri = "https://smlopenapi.esign.cn";
 
     public function handle()
     {
@@ -35,10 +35,10 @@ abstract class EsignRequest
 
         $param = json_decode($paramStr,true);
 
-        return $this->eSignRequest($this->reqType,$this->baseUri.$this->url,$param,$headers);
+        return $this->eSignRequest($this->reqType,Esign::getBaseUri().$this->url,$param,$headers);
 
         // curl request
-       // return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = $this->baseUri);
+//        return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = $this->baseUri);
     }
 
     public function getReqType()
@@ -63,12 +63,12 @@ abstract class EsignRequest
 
     public function getBaseUri()
     {
-        return $this->baseUri;
+        return Esign::getBaseUri();
     }
 
     public function setBaseUri($url)
     {
-        $this->baseUri = $url;
+        return Esign::setBaseUri($url);
     }
 
     abstract function build();

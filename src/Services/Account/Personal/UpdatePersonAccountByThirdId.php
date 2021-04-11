@@ -5,7 +5,6 @@ namespace really4you\E\Sign\Services\Account\Personal;
 use really4you\E\Sign\EsignRequest;
 use JsonSerializable;
 use really4you\E\Sign\HttpEmun;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 
 /**
  * 修改个人签署账号(按照第三方用户ID修改)
@@ -13,7 +12,7 @@ use really4you\E\Sign\Services\Contracts\RequestUrl;
  * Class UpdatePersonAccountByThirdId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class UpdatePersonAccountByThirdId extends EsignRequest implements JsonSerializable,RequestUrl
+class UpdatePersonAccountByThirdId extends EsignRequest implements \JsonSerializable
 {
     private $thirdPartyUserId;
     private $email;
@@ -144,7 +143,7 @@ class UpdatePersonAccountByThirdId extends EsignRequest implements JsonSerializa
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value==null||$key=='thirdPartyUserId') {
+            if($value == null || $key == 'thirdPartyUserId') {
                 continue;
             }
             $json[$key] = $value;

@@ -4,8 +4,6 @@ namespace really4you\E\Sign\Services\Signet;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
-use JsonSerializable;
-use really4you\E\Sign\Services\Contracts\RequestUrl;
 use really4you\E\Sign\Traits\Properties;
 
 /**
@@ -14,7 +12,7 @@ use really4you\E\Sign\Traits\Properties;
  * Class CreatePersonalTemplate
  * @package really4you\E\Sign\Services\Signet
  */
-class CreatePersonalTemplate extends EsignRequest implements JsonSerializable,RequestUrl
+class CreatePersonalTemplate extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 

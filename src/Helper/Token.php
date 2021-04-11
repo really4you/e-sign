@@ -3,20 +3,14 @@
 namespace really4you\E\Sign\Helper;
 
 use really4you\E\Sign\Esign;
-use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\Exceptions\InvalidArgumentException;
 use really4you\E\Sign\Exceptions\HttpException;
 use really4you\E\Sign\Traits\HasHttpRequest;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-class Token extends EsignRequest
+class Token
 {
     use HasHttpRequest;
-
-    public function build()
-    {
-        // TODO: Implement build() method.
-    }
 
     /**
      * get token
@@ -30,8 +24,7 @@ class Token extends EsignRequest
      */
     public function getAccessToken($prefix = 'default_e_sign', $grantType = 'client_credentials')
     {
-
-        $url    = $this->baseUri."/v1/oauth2/access_token";
+        $url    = Esign::getBaseUri()."/v1/oauth2/access_token";
         $prefix.= '_token';
 
         $cache = new FilesystemAdapter();
