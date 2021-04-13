@@ -22,9 +22,6 @@ class CertificationServicesApi
     {
         $auth = Auth::bankCard4Factors($option);
 
-        $response = $auth->handle();
-        $createPsnJson = $response->getBody();
-
-        return $createPsnJson;
+        return $auth->handle();
     }
 }
