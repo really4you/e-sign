@@ -2,7 +2,11 @@
 
 namespace really4you\E\Sign\Services\FileTemplate;
 
+use really4you\E\Sign\Esign;
 use really4you\E\Sign\EsignRequest;
+use really4you\E\Sign\Exceptions\InvalidArgumentException;
+use really4you\E\Sign\Helper\HttpHelper;
+use really4you\E\Sign\Helper\UtilHelper;
 use really4you\E\Sign\HttpEmun;
 
 /**
@@ -18,23 +22,36 @@ class GetFileUploadUrl extends EsignRequest implements \JsonSerializable
     private $convert2Pdf;
     private $fileName;
     private $fileSize;
-    private $accountId;
 
-    /**
-     * GetFileUploadUrl constructor.
-     * @param $contentMd5
-     * @param $contentType
-     * @param $convert2Pdf
-     * @param $fileName
-     * @param $fileSize
-     */
-    public function __construct($contentMd5, $contentType, $convert2Pdf, $fileName, $fileSize)
+    private $requestResult;
+
+    public function __construct($option)
     {
-        $this->contentMd5 = $contentMd5;
-        $this->contentType = $contentType;
-        $this->convert2Pdf = $convert2Pdf;
-        $this->fileName = $fileName;
-        $this->fileSize = $fileSize;
+        $file = new \SplFileInfo($option['filePath']);
+
+        if(!$file->isFile()){
+            throw new InvalidArgumentException('file does not exist');
+        }
+
+        $fileName  = $file->getFilename();
+        $extension = $file->getExtension();
+        $fileSize  = $file->getSize();
+
+        // set
+        $this->setConvert2Pdf($extension == 'pdf' ? false : true);
+        $this->setContentMd5(UtilHelper::getContentBase64Md5($option['filePath']));
+        $this->setFileName($fileName);
+        $this->setFileSize($fileSize);
+        $this->setContentType(isset($option['contentType']) ? : 'application/octet-stream');
+
+        $this->build();
+        $paramStr = json_encode($this,JSON_UNESCAPED_SLASHES);
+        $this->requestResult =  HttpHelper::request($this->getReqType(),$this->getUrl(),$paramStr ,$baseUri = Esign::getBaseUri());
+    }
+
+    public function getRequestResult()
+    {
+        return $this->requestResult;
     }
 
     /**
@@ -115,22 +132,6 @@ class GetFileUploadUrl extends EsignRequest implements \JsonSerializable
     public function setFileSize($fileSize)
     {
         $this->fileSize = $fileSize;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAccountId()
-    {
-        return $this->accountId;
-    }
-
-    /**
-     * @param mixed $accountId
-     */
-    public function setAccountId($accountId)
-    {
-        $this->accountId = $accountId;
     }
 
 

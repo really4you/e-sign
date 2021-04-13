@@ -37,7 +37,7 @@ class  FileTemplateApi
      */
     public function createTemplateByUploadUrl(array $option)
     {
-        $file = FileTemplate::CreateTemplateByUploadUrl($option);
+        $file = FileTemplate::createTemplateByUploadUrl($option);
 
         return $file->getRequestResult()->getBody();
     }
@@ -50,7 +50,7 @@ class  FileTemplateApi
      */
     public function templatesInfo($templateId)
     {
-        $file = FileTemplate::TemplatesInfo($templateId);
+        $file = FileTemplate::templatesInfo($templateId);
 
         return $file->handle();
     }
@@ -69,5 +69,17 @@ class  FileTemplateApi
         $uploadFileResp = $uploadFile->execute();
 
         return $uploadFileResp->getBody();
+    }
+
+    /**
+     * 通过上传方式创建文件
+     *
+     * @param array $option
+     * @return mixed
+     * @throws \really4you\E\Sign\Exceptions\InvalidArgumentException
+     */
+    public function getFileUploadUrl(array $option)
+    {
+        return FileTemplate::getFileUploadUrl($option)->getRequestResult()->getBody();
     }
 }

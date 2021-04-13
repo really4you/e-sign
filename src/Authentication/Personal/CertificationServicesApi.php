@@ -5,7 +5,7 @@ namespace really4you\E\Sign\Authentication\Personal;
 use really4you\E\Sign\Services\Base\Authentication\Personal\Auth;
 
 /**
- * 认证服务纯API
+ * 个人认证服务纯API
  *
  * Class CertificationServicesApi
  * @package really4you\E\Sign\Authentication\Personal
@@ -20,8 +20,6 @@ class CertificationServicesApi
      */
     public function bankCard4Factors(array $option)
     {
-        $auth = Auth::bankCard4Factors($option);
-
-        return $auth->handle();
+        return Auth::bankCard4Factors($option)->handle();
     }
 }

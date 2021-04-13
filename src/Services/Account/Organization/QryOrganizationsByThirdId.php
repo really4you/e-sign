@@ -6,9 +6,10 @@ use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
 
 /**
- * 轩辕API查询机构账号（按照第三方机构ID查询）
- * @author  澄泓
- * @date  2020/11/20 10:18
+ * 查询机构账号（按照第三方机构ID查询）
+ *
+ * Class QryOrganizationsByThirdId
+ * @package really4you\E\Sign\Services\Account\Organization
  */
 class QryOrganizationsByThirdId extends EsignRequest implements \JsonSerializable
 {

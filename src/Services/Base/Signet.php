@@ -21,12 +21,12 @@ class Signet
      * @param $type
      * @return CreatePersonalTemplate
      */
-    public static function CreatePersonalTemplate($option)
+    public static function createPersonalTemplate($option)
     {
         return new CreatePersonalTemplate($option);
     }
 
-    public static function CreateOfficialtemplate($option)
+    public static function createOfficialtemplate($option)
     {
         return new CreateOfficialTemplate($option);
     }

@@ -22,12 +22,6 @@ class CreateFlowOneStep extends EsignRequest implements \JsonSerializable
     private $flowInfo;
     private $signers;
 
-    /**
-     * CreateFlowOneStep constructor.
-     * @param $docs
-     * @param $flowInfo
-     * @param $signers
-     */
     public function __construct($option)
     {
         $this->setProperties($option);

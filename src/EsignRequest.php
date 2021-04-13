@@ -19,7 +19,6 @@ abstract class EsignRequest
         try {
             $reflectionClass = new ReflectionClass($this);
         } catch (\ReflectionException $e) {
-            //throw  new HttpException('ReflectionClass fail:'.$e->getMessage());
         }
 
         $build = $reflectionClass->getMethod("build");

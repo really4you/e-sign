@@ -35,7 +35,13 @@ class FileTemplate
         return new CreateTemplateByUploadUrl($option);
     }
 
-    public static function TemplatesInfo($templateId)
+    /**
+     * 查询模板详情/下载模板
+     *
+     * @param $templateId
+     * @return TemplatesInfo
+     */
+    public static function templatesInfo($templateId)
     {
         return new TemplatesInfo($templateId);
     }
@@ -43,16 +49,13 @@ class FileTemplate
     /**
      * 通过上传方式创建文件
      *
-     * @param $contentMd5
-     * @param $contentType
-     * @param $convert2Pdf
-     * @param $fileName
-     * @param $fileSize
+     * @param $option
      * @return GetFileUploadUrl
+     * @throws \really4you\E\Sign\Exceptions\InvalidArgumentException
      */
-    public static function getFileUploadUrl($contentMd5, $contentType, $convert2Pdf, $fileName, $fileSize)
+    public static function getFileUploadUrl($option)
     {
-        return new GetFileUploadUrl($contentMd5, $contentType, $convert2Pdf, $fileName, $fileSize);
+        return new GetFileUploadUrl($option);
     }
 
     /**

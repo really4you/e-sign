@@ -1,6 +1,6 @@
 <?php
 
-namespace really4you\E\Sign\Services\Account\Authentication\BankCard4Factors;
+namespace really4you\E\Sign\Services\Authentication\Personal\Api\BankCard4Factors;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;

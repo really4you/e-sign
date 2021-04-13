@@ -30,18 +30,9 @@ class UpdateOrganizationsByOrgId extends EsignRequest implements \JsonSerializab
      */
     protected $prefix = 'set';
 
-    /**
-     * UpdateOrganizationsByOrgId constructor.
-     * @param $orgId
-     */
     public function __construct(array $option)
     {
         $this->setProperties($option);
-//        if(!isset($option['orgId'])){
-//            throw  new  InvalidArgumentException('orgId not exits');
-//        }
-//        $this->orgId = $option['orgId'];
-
     }
 
     /**

@@ -97,7 +97,7 @@ class RevokeSignFlow extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if ($value === null || $key == 'flowId') {
+            if ($value === null) {
                 continue;
             }
             $json[$key] = $value;

@@ -46,16 +46,6 @@ class Account
         return new DeletePersonByThirdId($thirdPartyUserId);
     }
 
-    /**
-     * 撤销静默签署
-     * @param $accountId
-     * @return DeleteSignAuth
-     */
-    public static function deleteSignAuth($accountId)
-    {
-        return new DeleteSignAuth($accountId);
-    }
-
 
     /**
      * 查询机构账号（按照账号ID查询）
@@ -75,16 +65,6 @@ class Account
     public static function qryPersonByThirdId($thirdPartyUserId)
     {
         return new QryPersonByThirdId($thirdPartyUserId);
-    }
-
-    /**
-     * 设置静默签署
-     * @param $accountId
-     * @return SetSignAuth
-     */
-    public static function setSignAuth($accountId)
-    {
-        return new SetSignAuth($accountId);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace really4you\E\Sign\Services\Account;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
+use really4you\E\Sign\Traits\Properties;
 
 /**
  * 设置静默签署授权
@@ -13,6 +14,8 @@ use really4you\E\Sign\HttpEmun;
  */
 class SetSignAuth extends EsignRequest implements \JsonSerializable
 {
+    use Properties;
+
     /**
      * 个人/机构签署账号ID，通过创建个人/机构签署账号接口获取
      *
@@ -27,13 +30,9 @@ class SetSignAuth extends EsignRequest implements \JsonSerializable
      */
     private $deadline;
 
-    /**
-     * SetSignAuth constructor.
-     * @param $accountId
-     */
-    public function __construct($accountId)
+    public function __construct($option)
     {
-        $this->accountId = $accountId;
+        $this->setProperties($option);
     }
 
     /**
@@ -85,7 +84,7 @@ class SetSignAuth extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value == null || $key =='accountId') {
+            if($value == null) {
                 continue;
             }
             $json[$key] = $value;
