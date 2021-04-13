@@ -29,16 +29,19 @@ abstract class EsignRequest
             $paramStr='{}';
         }
 
-        // set headers
-        $headers =  (!(strtoupper($this->reqType) == "GET") || !(strtoupper($this->reqType) == "DELETE") ) ?
-                UtilHelper::buildHeaders($this->reqType,$this->url,$paramStr) : [];
+        try {
+            // set headers
+            $headers =  UtilHelper::buildHeaders($this->reqType,$this->url,$paramStr) ;
+            $param = json_decode($paramStr,true);
 
-        $param = json_decode($paramStr,true);
+            return $this->eSignRequest($this->reqType,Esign::getBaseUri().$this->url,$param,$headers);
 
-        return $this->eSignRequest($this->reqType,Esign::getBaseUri().$this->url,$param,$headers);
+        } catch (\Throwable $e) {
+            return json_encode($e->getMessage());
+        }
 
         // curl request
-//        return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = $this->baseUri);
+        //return HttpHelper::request($this->reqType,$this->url,$paramStr ,$baseUri = Esign::getBaseUri());
     }
 
     public function getReqType()

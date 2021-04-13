@@ -18,7 +18,7 @@ class SignetApi
      * @param array $option
      * @return mixed
      */
-    public function CreatePersonalTemplate(array $option)
+    public function createPersonalTemplate(array $option)
     {
         $create = SignetService::CreatePersonalTemplate($option);
 
@@ -31,7 +31,7 @@ class SignetApi
      * @param array $option
      * @return mixed
      */
-    public function CreateOfficialtemplate(array $option)
+    public function createOfficialtemplate(array $option)
     {
         $create = SignetService::CreateOfficialtemplate($option);
 

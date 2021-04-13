@@ -12,9 +12,11 @@ use really4you\E\Sign\Services\Base\SignFile;
  */
 class SignFileApi
 {
-    public function createSignFlow(array $option)
+    // 一步发起签署, $docs, $flowInfo, $signers
+    public function createFlowOneStep(array $option)
     {
-        $createSignFlow = SignFile::createSignFlow($option);
-        return $createSignFlow->handle();
+        $createFlowOneStep = SignFile::createFlowOneStep($option);
+
+        return $createFlowOneStep->handle();
     }
 }

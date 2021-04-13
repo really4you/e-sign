@@ -102,7 +102,7 @@ trait HasHttpRequest
     {
         return $this->request('delete', $endpoint, [
             'headers' => $headers,
-            'json' => $params,
+            'query' => $params,
         ]);
     }
 

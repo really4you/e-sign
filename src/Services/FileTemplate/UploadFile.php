@@ -22,11 +22,11 @@ class UploadFile
      * @param $contentType
      * @param $url
      */
-    public function __construct($filePath, $contentType, $url)
+    public function __construct($filePath, $url, $contentType)
     {
         $this->filePath = $filePath;
-        $this->contentType = $contentType;
         $this->url = $url;
+        $this->contentType = $contentType;
     }
 
     /**
@@ -77,7 +77,8 @@ class UploadFile
         $this->url = $url;
     }
 
-    public function execute(){
-        return HttpHelper::upLoadFileHttp($this->url,$this->filePath,$this->contentType);
+    public function execute()
+    {
+        return HttpHelper::upLoadFileHttp($this->filePath,$this->url,$this->contentType);
     }
 }

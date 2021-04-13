@@ -16,6 +16,13 @@ class CreateFileByTemplate extends EsignRequest implements \JsonSerializable
 {
     use Properties;
 
+    /**
+     * 文件名称（必须带上文件扩展名，不然会导致后续发起流程校验过不去 示例：合同.pdf ）
+     * 注意：
+      （1）该字段的文件后缀名称和真实的文件后缀需要一致。比如上传的文件类型是word文件，那该参数需要传“xxx.docx”，不能是“xxx.pdf”
+      （2）文件名称不支持以下9个字符：/ \ : * " < > | ？
+     * @var
+     */
     private $name;
 
     /**

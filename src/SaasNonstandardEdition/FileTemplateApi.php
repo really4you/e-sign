@@ -3,6 +3,7 @@
 namespace really4you\E\Sign\SaasNonstandardEdition;
 
 use really4you\E\Sign\Services\Base\FileTemplate;
+use really4you\E\Sign\Services\FileTemplate\UploadFile;
 
 /**
  * 文件模板API
@@ -10,7 +11,7 @@ use really4you\E\Sign\Services\Base\FileTemplate;
  * Class FileTemplateApi
  * @package really4you\E\Sign\SaasNonstandardEdition
  */
-class FileTemplateApi
+class  FileTemplateApi
 {
     /**
      * 通过模板创建文件
@@ -34,11 +35,11 @@ class FileTemplateApi
      * @return mixed
      * @throws \really4you\E\Sign\Exceptions\InvalidArgumentException
      */
-    public function CreateTemplateByUploadUrl(array $option)
+    public function createTemplateByUploadUrl(array $option)
     {
         $file = FileTemplate::CreateTemplateByUploadUrl($option);
 
-        return $file->handle();
+        return $file->getRequestResult()->getBody();
     }
 
     /**
@@ -47,10 +48,26 @@ class FileTemplateApi
      * @param $templateId
      * @return mixed
      */
-    public function TemplatesInfo($templateId)
+    public function templatesInfo($templateId)
     {
         $file = FileTemplate::TemplatesInfo($templateId);
 
         return $file->handle();
+    }
+
+    /**
+     * 文件流上传
+     *
+     * @param $filePath
+     * @param $uploadUrl
+     * @param string $contentType
+     * @return mixed
+     */
+    public function uploadFile($filePath, $uploadUrl, $contentType = "application/octet-stream")
+    {
+        $uploadFile = new UploadFile($filePath, $uploadUrl, $contentType);
+        $uploadFileResp = $uploadFile->execute();
+
+        return $uploadFileResp->getBody();
     }
 }

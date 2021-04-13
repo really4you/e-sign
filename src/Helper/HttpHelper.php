@@ -37,7 +37,7 @@ class HttpHelper
      * @param $ContenType
      * @return response\EsignResponse
      */
-    public static function upLoadFileHttp($uploadUrls,$filePath,$ContenType)
+    public static function upLoadFileHttp($filePath, $uploadUrls,$ContenType)
     {
         $fileContent = file_get_contents($filePath);
         $contentBase64Md5 = UtilHelper::getContentBase64Md5($filePath);

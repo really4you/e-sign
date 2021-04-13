@@ -2,8 +2,10 @@
 
 namespace really4you\E\Sign\Services\FileTemplate;
 
+use really4you\E\Sign\Esign;
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\Exceptions\InvalidArgumentException;
+use really4you\E\Sign\Helper\HttpHelper;
 use really4you\E\Sign\Helper\UtilHelper;
 use really4you\E\Sign\HttpEmun;
 
@@ -31,25 +33,37 @@ class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializabl
      * @var
      */
     private $convert2Pdf;
-
-    protected $defaultProperties = ['convert2Pdf'];
+    private $requestResult;
 
     public function __construct($option)
     {
         $file = new \SplFileInfo($option['filePath']);
 
+
         if(!$file->isFile()){
             throw new InvalidArgumentException('file does not exist');
         }
+
 
         $fileName =  $file->getFilename();
         $extension = $file->getExtension();
 
         // set
         $this->setConvert2Pdf($extension == 'pdf' ? false : true);
-        $this->contentMd5  = UtilHelper::getContentBase64Md5($option['filePath']);
+        $this->setContentMd5(UtilHelper::getContentBase64Md5($option['filePath']));
         $this->setFileName($fileName);
         $this->setContentType(isset($option['contentType']) ? : 'application/octet-stream');
+
+
+        $this->build();
+        $paramStr = json_encode($this,JSON_UNESCAPED_SLASHES);
+        $this->requestResult =  HttpHelper::request($this->getReqType(),$this->getUrl(),$paramStr ,$baseUri = Esign::getBaseUri());
+
+    }
+
+    public function getRequestResult()
+    {
+        return $this->requestResult;
     }
 
     /**
