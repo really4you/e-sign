@@ -39,11 +39,9 @@ class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializabl
     {
         $file = new \SplFileInfo($option['filePath']);
 
-
         if(!$file->isFile()){
             throw new InvalidArgumentException('file does not exist');
         }
-
 
         $fileName =  $file->getFilename();
         $extension = $file->getExtension();
@@ -53,7 +51,6 @@ class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializabl
         $this->setContentMd5(UtilHelper::getContentBase64Md5($option['filePath']));
         $this->setFileName($fileName);
         $this->setContentType(isset($option['contentType']) ? : 'application/octet-stream');
-
 
         $this->build();
         $paramStr = json_encode($this,JSON_UNESCAPED_SLASHES);
