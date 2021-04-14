@@ -20,9 +20,7 @@ class SigningProcess
      */
     public function createSignFlow(array $option)
     {
-        $createSignFlow = SignFile::createSignFlow($option);
-
-        return $createSignFlow->handle();
+        return SignFile::createSignFlow($option)->handle();
     }
 
     /**
@@ -33,9 +31,7 @@ class SigningProcess
      */
     public function qrySignFlow($flowId)
     {
-        $qrySignFlow = SignFile::qrySignFlow($flowId);
-
-        return $qrySignFlow->handle();
+        return SignFile::qrySignFlow($flowId)->handle();
     }
 
     /**
@@ -46,9 +42,7 @@ class SigningProcess
      */
     public function startSignFlow($flowId)
     {
-        $startSignFlow = SignFile::startSignFlow($flowId);
-
-        return $startSignFlow->handle();
+        return SignFile::startSignFlow($flowId)->handle();
     }
 
     /**
@@ -59,9 +53,7 @@ class SigningProcess
      */
     public function revokeSignFlow($flowId)
     {
-        $revokeSignFlow = SignFile::revokeSignFlow($flowId);
-
-        return $revokeSignFlow->handle();
+        return SignFile::revokeSignFlow($flowId)->handle();
     }
 
     /**
@@ -72,9 +64,7 @@ class SigningProcess
      */
     public function archiveSignFlow($flowId)
     {
-        $archiveSignFlow = SignFile::archiveSignFlow($flowId);
-
-        return $archiveSignFlow->handle();
+        return SignFile::archiveSignFlow($flowId)->handle();
     }
 
     /**
@@ -85,8 +75,6 @@ class SigningProcess
      */
     public function getVoucherSignFlow($flowId)
     {
-        $getVoucherSignFlow = SignFile::getVoucherSignFlow($flowId);
-
-        return $getVoucherSignFlow->handle();
+        return SignFile::getVoucherSignFlow($flowId)->handle();
     }
 }

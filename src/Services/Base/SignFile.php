@@ -294,10 +294,7 @@ class SignFile
     /**
      * 一步发起签署
      *
-     * @param $doc
-     * @param $flowInfo
-     * @param $signers
-     *
+     * @param $option
      * @return CreateFlowOneStep
      */
     public static function createFlowOneStep($option)

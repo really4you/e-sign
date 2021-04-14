@@ -20,9 +20,7 @@ class Personal
      */
     public function addPersonAccountID(array $option)
     {
-        $createPsn = Account::createPersonByThirdPartyUserId($option);
-
-        return $createPsn->handle();
+        return Account::createPersonByThirdPartyUserId($option)->handle();
     }
 
     /**
@@ -36,9 +34,7 @@ class Personal
      */
     public function UpdatePersonAccountByAccountId(array $option)
     {
-        $account = Account::updatePersonAccountByAccountId($option);
-
-        return $account->handle();
+        return Account::updatePersonAccountByAccountId($option)->handle();
     }
 
 }

@@ -55,7 +55,6 @@ class CreateTemplateByUploadUrl extends EsignRequest implements \JsonSerializabl
         $this->build();
         $paramStr = json_encode($this,JSON_UNESCAPED_SLASHES);
         $this->requestResult =  HttpHelper::request($this->getReqType(),$this->getUrl(),$paramStr ,$baseUri = Esign::getBaseUri());
-
     }
 
     public function getRequestResult()

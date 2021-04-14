@@ -4,6 +4,7 @@ namespace really4you\E\Sign\Services\Base;
 
 use really4you\E\Sign\Services\FileTemplate\CreateFileByTemplate;
 use really4you\E\Sign\Services\FileTemplate\CreateTemplateByUploadUrl;
+use really4you\E\Sign\Services\FileTemplate\FilesInfo;
 use really4you\E\Sign\Services\FileTemplate\GetFileUploadUrl;
 use really4you\E\Sign\Services\FileTemplate\TemplatesInfo;
 use really4you\E\Sign\Services\FileTemplate\UploadFile;
@@ -69,4 +70,16 @@ class FileTemplate
     {
         return new UploadFile($filePath, $contentType, $url);
     }
+
+    /**
+     * 查询文件详情/下载文件
+     *
+     * @param $fileId
+     * @return FilesInfo
+     */
+    public static function filesInfo($fileId)
+    {
+        return new FilesInfo($fileId);
+    }
+
 }

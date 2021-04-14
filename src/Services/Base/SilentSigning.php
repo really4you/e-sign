@@ -24,9 +24,9 @@ class SilentSigning
         return new SetSignAuth($option);
     }
 
-
     /**
      * 撤销静默签署
+     *
      * @param $accountId
      * @return DeleteSignAuth
      */

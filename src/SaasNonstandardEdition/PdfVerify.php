@@ -20,8 +20,6 @@ class PdfVerify
      */
     public function pdfVerify($fileId)
     {
-        $pdf = SignFile::pdfVerify($fileId);
-
-        return $pdf->handle();
+        return SignFile::pdfVerify($fileId)->handle();
     }
 }

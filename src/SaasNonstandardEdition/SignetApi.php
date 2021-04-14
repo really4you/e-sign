@@ -20,9 +20,7 @@ class SignetApi
      */
     public function createPersonalTemplate(array $option)
     {
-        $create = SignetService::CreatePersonalTemplate($option);
-
-        return $create->handle();
+        return SignetService::createPersonalTemplate($option)->handle();
     }
 
     /**
@@ -33,8 +31,6 @@ class SignetApi
      */
     public function createOfficialtemplate(array $option)
     {
-        $create = SignetService::CreateOfficialtemplate($option);
-
-        return $create->handle();
+        return SignetService::createOfficialtemplate($option)->handle();
     }
 }

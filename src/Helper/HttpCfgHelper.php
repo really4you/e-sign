@@ -61,9 +61,9 @@ class HttpCfgHelper
 //            var_dump("响应" . $curlRes);
 //        }
 
-
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
         return new EsignResponse($httpCode,$curlRes);
     }
 
@@ -102,8 +102,9 @@ class HttpCfgHelper
         }
         $curlRes = curl_exec($curl_handle);
         $httpCode = curl_getinfo($curl_handle, CURLINFO_HTTP_CODE);
-        self::writeLog($curlRes);
+//        self::writeLog($curlRes);
         curl_close($curl_handle);
+
         return new EsignResponse($httpCode,$curlRes);
     }
 

@@ -16,9 +16,7 @@ class Signet
     /**
      * 创建个人模板印章
      *
-     * @param $accountId
-     * @param $color
-     * @param $type
+     * @param $option
      * @return CreatePersonalTemplate
      */
     public static function createPersonalTemplate($option)
@@ -26,6 +24,12 @@ class Signet
         return new CreatePersonalTemplate($option);
     }
 
+    /**
+     * 创建机构模板印章
+     *
+     * @param $option
+     * @return CreateOfficialTemplate
+     */
     public static function createOfficialtemplate($option)
     {
         return new CreateOfficialTemplate($option);

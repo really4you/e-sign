@@ -23,9 +23,7 @@ class  FileTemplateApi
      */
     public function createFileByTemplate(array $option)
     {
-        $file = FileTemplate::createFileByTemplate($option);
-
-        return $file->handle();
+        return FileTemplate::createFileByTemplate($option)->handle();
     }
 
     /**
@@ -37,9 +35,8 @@ class  FileTemplateApi
      */
     public function createTemplateByUploadUrl(array $option)
     {
-        $file = FileTemplate::createTemplateByUploadUrl($option);
-
-        return $file->getRequestResult()->getBody();
+        return  FileTemplate::createTemplateByUploadUrl($option)
+            ->getRequestResult()->getBody();
     }
 
     /**
@@ -50,9 +47,7 @@ class  FileTemplateApi
      */
     public function templatesInfo($templateId)
     {
-        $file = FileTemplate::templatesInfo($templateId);
-
-        return $file->handle();
+        return FileTemplate::templatesInfo($templateId)->handle();
     }
 
     /**
@@ -81,5 +76,17 @@ class  FileTemplateApi
     public function getFileUploadUrl(array $option)
     {
         return FileTemplate::getFileUploadUrl($option)->getRequestResult()->getBody();
+    }
+
+
+    /**
+     * 查询文件详情/下载文件
+     *
+     * @param $fileId
+     * @return mixed|string
+     */
+    public function filesInfo($fileId)
+    {
+        return FileTemplate::filesInfo($fileId)->handle();
     }
 }

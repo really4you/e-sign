@@ -2,7 +2,6 @@
 
 namespace really4you\E\Sign\Services\Base;
 
-use really4you\E\Sign\Services\Account\DeleteSignAuth;
 use really4you\E\Sign\Services\Account\Personal\CreatePersonByThirdPartyUserId;
 use really4you\E\Sign\Services\Account\Personal\DeletePersonByAccountId;
 use really4you\E\Sign\Services\Account\Personal\DeletePersonByThirdId;
@@ -10,7 +9,6 @@ use really4you\E\Sign\Services\Account\Personal\QryPersonByaccountId;
 use really4you\E\Sign\Services\Account\Personal\QryPersonByThirdId;
 use really4you\E\Sign\Services\Account\Personal\UpdatePersonAccountByAccountId;
 use really4you\E\Sign\Services\Account\Personal\UpdatePersonAccountByThirdId;
-use really4you\E\Sign\Services\Account\SetSignAuth;
 use really4you\E\Sign\Services\Account\SetSignPwd;
 
 /**
