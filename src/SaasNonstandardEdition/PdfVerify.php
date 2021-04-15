@@ -18,8 +18,8 @@ class PdfVerify
      * @param $fileId
      * @return mixed|string
      */
-    public function pdfVerify($fileId)
+    public function pdfVerify(array $option)
     {
-        return SignFile::pdfVerify($fileId)->handle();
+        return SignFile::pdfVerify($option)->handle();
     }
 }

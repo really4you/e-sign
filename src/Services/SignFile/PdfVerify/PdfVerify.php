@@ -4,6 +4,7 @@ namespace really4you\E\Sign\Services\SignFile\PdfVerify;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
+use really4you\E\Sign\Traits\Properties;
 
 /**
  * 文件验签
@@ -13,16 +14,20 @@ use really4you\E\Sign\HttpEmun;
  */
 class PdfVerify extends EsignRequest implements \JsonSerializable
 {
+    use Properties;
+
     private $fileId;
-    private $flowId;
 
     /**
-     * PdfVerify constructor.
-     * @param $fileId
+     * 流程id，需对已归档的签署流程进行验签
+     *
+     * @var  string
      */
-    public function __construct($fileId)
+    private $flowId;
+
+    public function __construct($option)
     {
-        $this->fileId = $fileId;
+        $this->setProperties($option);
     }
 
     /**
@@ -65,29 +70,15 @@ class PdfVerify extends EsignRequest implements \JsonSerializable
     {
         $url="/v1/documents/".$this->fileId."/verify?";
         if($this->flowId !== null){
-            $url=$url."&flowId=".$this->flowId;
+            $url=$url."flowId=".$this->flowId;
         }
 
         $this->setUrl($url);
         $this->setReqType(HttpEmun::GET);
     }
 
-    /**
-     * Specify data which should be serialized to JSON
-     * @link https://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     * @since 5.4.0
-     */
     public function jsonSerialize()
     {
-        $json = array();
-        foreach ($this as $key => $value) {
-            if($value === null || $key == 'flowId' || $key  =='fileId') {
-                continue;
-            }
-            $json[$key] = $value;
-        }
-        return $json;
+        return null;
     }
 }

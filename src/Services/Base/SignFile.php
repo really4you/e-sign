@@ -135,12 +135,12 @@ class SignFile
     /**
      * 文件验签
      *
-     * @param $fileId
+     * @param $option
      * @return PdfVerify
      */
-    public static function pdfVerify($fileId)
+    public static function pdfVerify($option)
     {
-        return new PdfVerify($fileId);
+        return new PdfVerify($option);
     }
 
     /**
