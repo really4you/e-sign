@@ -12,19 +12,26 @@ use really4you\E\Sign\Services\Base\SignFile;
  */
 class DataSign
 {
-    // 平台方&平台用户文本签
-    public function dataSign($data, $type)
+    /**
+     * 平台方&平台用户文本签
+     *
+     * @param array $option
+     * @return mixed|string
+     */
+    public function dataSign(array $option)
     {
-       $dataSign =  SignFile::dataSign($data, $type);
-
-       return $dataSign->handle();
+       return  SignFile::dataSign($option)->handle();
     }
 
-    // 文本签验签
+    /**
+     * 文本签验签
+     *
+     * @param $data
+     * @param $signResult
+     * @return mixed|string
+     */
     public function ataVerify($data, $signResult)
     {
-        $dataSign =  SignFile::ataVerify($data, $signResult);
-
-        return $dataSign->handle();
+        return SignFile::ataVerify($data, $signResult)->handle();
     }
 }

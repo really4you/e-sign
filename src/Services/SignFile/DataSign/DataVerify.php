@@ -80,7 +80,7 @@ class DataVerify extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value===null) {
+            if($value === null) {
                 continue;
             }
             $json[$key] = $value;

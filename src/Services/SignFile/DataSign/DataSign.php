@@ -4,6 +4,7 @@ namespace really4you\E\Sign\Services\SignFile\DataSign;
 
 use really4you\E\Sign\EsignRequest;
 use really4you\E\Sign\HttpEmun;
+use really4you\E\Sign\Traits\Properties;
 
 /**
  * 平台方&平台用户文本签
@@ -13,19 +14,15 @@ use really4you\E\Sign\HttpEmun;
  */
 class DataSign extends EsignRequest implements \JsonSerializable
 {
+    use Properties;
+
     private $accountId;
     private $data;
     private $type;
 
-    /**
-     * DataSign constructor.
-     * @param $data
-     * @param $type
-     */
-    public function __construct($data, $type)
+    public function __construct($option)
     {
-        $this->data = $data;
-        $this->type = $type;
+        $this->setProperties($option);
     }
 
     /**
@@ -99,7 +96,7 @@ class DataSign extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value===null) {
+            if($value === null) {
                 continue;
             }
             $json[$key] = $value;

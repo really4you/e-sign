@@ -115,9 +115,9 @@ class SignFile
      * @param $type
      * @return DataSign
      */
-    public static function dataSign($data, $type)
+    public static function dataSign($option)
     {
-        return new DataSign($data, $type);
+        return new DataSign($option);
     }
 
     /**
