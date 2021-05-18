@@ -181,8 +181,7 @@ trait HasHttpRequest
         $contents = $response->getBody()->getContents();
 
         if (false !== stripos($contentType, 'json') || stripos($contentType, 'javascript')) {
-            //return json_decode($contents, true);   // todo
-            return $contents;
+            return json_decode($contents, true);
         } elseif (false !== stripos($contentType, 'xml')) {
             return json_decode(json_encode(simplexml_load_string($contents)), true);
         }

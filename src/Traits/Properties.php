@@ -16,13 +16,12 @@ trait Properties
     {
         $ref   = new \ReflectionClass($this);
         $class = $ref->getName();
-        $perfix = property_exists($this,$this->prefix) ? : 'set';
+        $perfix = property_exists($this,isset($this->prefix) ? $this->prefix : 'set');
 
         // set default properties
         if(!empty($defaultP = $this->defaultProperties)){
             foreach ($defaultP as $propert){
                 $method = StrHelp::studly($propert);
-
                 if( (property_exists($this,$propert)) &&
                     (method_exists($this,$perfix.$method)) ){
                     call_user_func([$class,$perfix.$method]);
@@ -32,7 +31,6 @@ trait Properties
 
         foreach ($option as $name=>$value) {
             $method = StrHelp::studly($name);
-
             if( (property_exists($this,$name)) &&
                 (method_exists($this,$perfix.$method)) ){
                 call_user_func([$class,$perfix.$method],
