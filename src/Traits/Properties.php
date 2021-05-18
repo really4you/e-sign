@@ -19,8 +19,8 @@ trait Properties
         $perfix = property_exists($this,isset($this->prefix) ? $this->prefix : 'set');
 
         // set default properties
-        if(!empty($defaultP = $this->defaultProperties)){
-            foreach ($defaultP as $propert){
+        if(isset($this->defaultProperties)){
+            foreach ($this->defaultProperties as $propert){
                 $method = StrHelp::studly($propert);
                 if( (property_exists($this,$propert)) &&
                     (method_exists($this,$perfix.$method)) ){
