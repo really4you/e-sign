@@ -32,11 +32,15 @@ abstract class EsignRequest
             // set headers
             $headers =  UtilHelper::buildHeaders($this->reqType,$this->url,$paramStr) ;
             $param = json_decode($paramStr,true);
-
             return $this->eSignRequest($this->reqType,Esign::getBaseUri().$this->url,$param,$headers);
 
         } catch (\Throwable $e) {
-            return json_encode($e->getMessage());
+            $results = [
+                'url' => Esign::getBaseUri().$this->url,
+                'param' => $param,
+                'exception' => $e->getMessage(),
+            ];
+            return $results;
         }
 
         // curl request
