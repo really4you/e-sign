@@ -14,25 +14,27 @@ trait Properties
      */
     public function setProperties(array $option)
     {
-        $ref   = new \ReflectionClass($this);
-        $class = $ref->getName();
-        $perfix = property_exists($this,isset($this->prefix) ? $this->prefix : 'set');
+        $ref    = new \ReflectionClass($this);
+        $class  = $ref->getName();
+        $perfix = isset($this->prefix) ? $this->prefix : 'set';
 
         // set default properties
-        if(isset($this->defaultProperties)){
-            foreach ($this->defaultProperties as $propert){
+        if(isset($this->defaultProperties)) {
+            foreach ($this->defaultProperties as $propert)
+            {
                 $method = StrHelp::studly($propert);
-                if( (property_exists($this,$propert)) &&
-                    (method_exists($this,$perfix.$method)) ){
+                if((property_exists($this,$propert))
+                    && (method_exists($this,$perfix.$method))) {
                     call_user_func([$class,$perfix.$method]);
                 }
             }
         }
 
-        foreach ($option as $name=>$value) {
+        foreach ($option as $name=>$value)
+        {
             $method = StrHelp::studly($name);
-            if( (property_exists($this,$name)) &&
-                (method_exists($this,$perfix.$method)) ){
+            if((property_exists($this,$name))
+                && (method_exists($this,$perfix.$method))) {
                 call_user_func([$class,$perfix.$method],
                     $value);
             }
