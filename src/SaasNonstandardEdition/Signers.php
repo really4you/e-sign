@@ -19,9 +19,7 @@ class Signers
      */
     public function qrySigners($flowId)
     {
-        $qrySigners = SignFile::qrySigners(($flowId));
-
-        return $qrySigners->handle();
+        return SignFile::qrySigners($flowId)->handle();
     }
 
     /**
@@ -32,9 +30,7 @@ class Signers
      */
     public function rushSign($flowId)
     {
-        $rushSign = SignFile::rushSign($flowId);
-
-        return $rushSign->handle();
+       return SignFile::rushSign($flowId)->handle();
     }
 
     /**
@@ -46,8 +42,6 @@ class Signers
      */
     public function getFileSignUrl($flowId, $accountId)
     {
-        $getFileSignUrl = SignFile::getFileSignUrl($flowId, $accountId);
-
-        return $getFileSignUrl->handle();
+        return SignFile::getFileSignUrl($flowId, $accountId)->handle();
     }
 }

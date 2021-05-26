@@ -2,7 +2,9 @@
 
 namespace really4you\E\Sign\Services\SignFile;
 
+use really4you\E\Sign\Esign;
 use really4you\E\Sign\EsignRequest;
+use really4you\E\Sign\Helper\HttpHelper;
 use really4you\E\Sign\HttpEmun;
 use really4you\E\Sign\Traits\Properties;
 
@@ -22,9 +24,25 @@ class CreateFlowOneStep extends EsignRequest implements \JsonSerializable
     private $flowInfo;
     private $signers;
 
+    /**
+     * curl Response
+     *
+     * @var
+     */
+    private $requestResult;
+
     public function __construct($option)
     {
         $this->setProperties($option);
+
+        $this->build();
+        $paramStr = json_encode($this,JSON_UNESCAPED_SLASHES);
+        $this->requestResult =  HttpHelper::request($this->getReqType(),$this->getUrl(),$paramStr ,$baseUri = Esign::getBaseUri());
+    }
+
+    public function getRequestResult()
+    {
+        return $this->requestResult;
     }
 
     /**

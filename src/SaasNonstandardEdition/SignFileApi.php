@@ -20,6 +20,6 @@ class SignFileApi
      */
     public function createFlowOneStep(array $option)
     {
-        return SignFile::createFlowOneStep($option)->handle();
+        return SignFile::createFlowOneStep($option)->getRequestResult()->getBody();
     }
 }

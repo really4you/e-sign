@@ -30,7 +30,7 @@ class EsignResponse
 
     public function getBody()
     {
-        return $this->body;
+        return json_decode($this->body, true);
     }
 
     public function setBody($body)

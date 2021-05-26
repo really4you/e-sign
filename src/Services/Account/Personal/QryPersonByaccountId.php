@@ -8,7 +8,7 @@ use really4you\E\Sign\HttpEmun;
 /**
  * 查询个人账户（按照账户ID查询）
  *
- * Class QryPersonByaccountId
+ * Class QryPersonByAccountId
  * @package really4you\E\Sign\Services\Account\Personal
  */
 class QryPersonByAccountId extends EsignRequest implements \JsonSerializable
@@ -58,11 +58,9 @@ class QryPersonByAccountId extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value == null || $key == 'accountId') {
-                continue;
-            }
             $json[$key] = $value;
         }
+
         return $json;
     }
 }

@@ -58,11 +58,9 @@ class QryPersonByThirdId extends EsignRequest implements \JsonSerializable
     {
         $json = array();
         foreach ($this as $key => $value) {
-            if($value == null || $key == 'thirdPartyUserId') {
-                continue;
-            }
             $json[$key] = $value;
         }
+
         return $json;
     }
 }

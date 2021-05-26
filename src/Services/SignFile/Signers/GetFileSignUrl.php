@@ -11,7 +11,7 @@ use really4you\E\Sign\HttpEmun;
  * Class GetFileSignUrl
  * @package really4you\E\Sign\Services\SignFile\Signers
  */
-class GetFileSignUrl extends EsignRequest
+class GetFileSignUrl extends EsignRequest implements \JsonSerializable
 {
     private $flowId;
     private $accountId;
@@ -135,5 +135,15 @@ class GetFileSignUrl extends EsignRequest
 
         $this->setUrl($url);
         $this->setReqType(HttpEmun::GET);
+    }
+
+    public function jsonSerialize()
+    {
+        $json = array();
+        foreach ($this as $key => $value) {
+            $json[$key] = $value;
+        }
+
+        return $json;
     }
 }

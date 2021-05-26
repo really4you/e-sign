@@ -29,9 +29,20 @@ class SigningProcess
      * @param $flowId
      * @return mixed|string
      */
-    public function qrySignFlow($flowId)
+    public function qrySignFlow(string $flowId)
     {
         return SignFile::qrySignFlow($flowId)->handle();
+    }
+
+    /**
+     * 流程签署人列表
+     *
+     * @param string $flowId
+     * @return array|mixed
+     */
+    public static function qrySigners(string $flowId)
+    {
+        return SignFile::QrySigners($flowId)->handle();
     }
 
     /**
@@ -40,7 +51,7 @@ class SigningProcess
      * @param $flowId
      * @return mixed|string
      */
-    public function startSignFlow($flowId)
+    public function startSignFlow(string $flowId)
     {
         return SignFile::startSignFlow($flowId)->handle();
     }
@@ -51,7 +62,7 @@ class SigningProcess
      * @param $flowId
      * @return mixed|string
      */
-    public function revokeSignFlow($flowId)
+    public function revokeSignFlow(string $flowId)
     {
         return SignFile::revokeSignFlow($flowId)->handle();
     }
@@ -62,7 +73,7 @@ class SigningProcess
      * @param $flowId
      * @return mixed|string
      */
-    public function archiveSignFlow($flowId)
+    public function archiveSignFlow(string $flowId)
     {
         return SignFile::archiveSignFlow($flowId)->handle();
     }
@@ -73,7 +84,7 @@ class SigningProcess
      * @param $flowId
      * @return mixed|string
      */
-    public function getVoucherSignFlow($flowId)
+    public function getVoucherSignFlow(string $flowId)
     {
         return SignFile::getVoucherSignFlow($flowId)->handle();
     }
