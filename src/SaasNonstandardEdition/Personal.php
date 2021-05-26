@@ -37,4 +37,26 @@ class Personal
         return Account::updatePersonAccountByAccountId($option)->handle();
     }
 
+    /**
+     * 查询个人签署账号（通过accountIdID查询）
+     *
+     * @param string thirdPartyUserId
+     * @return array|mixed
+     */
+    public function qryPersonByAccountId(string $accountId)
+    {
+        return Account::qryPersonByAccountId($accountId)->handle();
+    }
+
+    /**
+     * 查询个人签署账号（通过thirdPartyUserId查询)
+     *
+     * @param string $thirdPartyUserId
+     * @return array|mixed
+     */
+    public function qryPersonByThirdId(string $thirdPartyUserId)
+    {
+        return Account::qryPersonByThirdId($thirdPartyUserId)->handle();
+
+    }
 }

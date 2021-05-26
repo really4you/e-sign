@@ -26,6 +26,7 @@ class Account
 
     /**
      * 注销个人账户（按照账号ID注销）
+     *
      * @param $accountId
      * @return DeletePersonByAccountId
      */
@@ -36,6 +37,7 @@ class Account
 
     /**
      * 注销个人账户（按照第三方用户ID注销）
+     *
      * @param $thirdPartyUserId
      * @return DeletePersonByThirdId
      */
@@ -46,17 +48,19 @@ class Account
 
 
     /**
-     * 查询机构账号（按照账号ID查询）
+     * 查询个人签署账号（通过accountIdID查询）
+     *
      * @param $accountId
      * @return QryPersonByaccountId
      */
-    public static function qryPersonByaccountId($accountId)
+    public static function qryPersonByAccountId($accountId)
     {
-        return new QryPersonByaccountId($accountId);
+        return new QryPersonByAccountId($accountId);
     }
 
     /**
-     * 查询个人账户（按照第三方用户ID查询）
+     * 查询个人签署账号（通过thirdPartyUserId查询
+     *
      * @param $thirdPartyUserId
      * @return QryPersonByThirdId
      */
@@ -67,6 +71,7 @@ class Account
 
     /**
      * 设置签署密码
+     *
      * @param $accountId
      * @param $password
      * @return SetSignPwd
@@ -90,6 +95,7 @@ class Account
 
     /**
      * 个人账户修改(按照第三方用户ID修改)
+     *
      * @param $thirdPartyUserId
      * @return UpdatePersonAccountByThirdId
      */

@@ -11,7 +11,7 @@ use really4you\E\Sign\HttpEmun;
  * Class QryPersonByaccountId
  * @package really4you\E\Sign\Services\Account\Personal
  */
-class QryPersonByaccountId extends EsignRequest implements \JsonSerializable
+class QryPersonByAccountId extends EsignRequest implements \JsonSerializable
 {
     private $accountId;
 
